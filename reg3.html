@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration Form</title>
+<link rel="stylesheet" href="style.css">
+<script src ="Script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <center>
+      <h2>USER REGISTRATION</h2>
+      <br>
+      <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" pattern="[a-z0-9_-]+" required><br>
+        <span class="error-message" id="usernameError"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}" required><br><br>
+        
+        <div class="remember-forgot">
+          <label><input type="checkbox"> Remember Me</label>
+          <a href="#">Forgot Password</a>
+        </div>
+        
+        <button type="submit" class="btn submit-btn">Submit</button>
+        <input type="reset" value="Clear" class="btn clear-btn">
+      </form>
+    </center>
+  </div>
+  
+</body>
+</html>

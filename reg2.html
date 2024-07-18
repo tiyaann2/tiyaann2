@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration Form</title>
+</head>
+<body>
+  <div class="container">
+    <center>
+      <h2>USER REGISTRATION</h2>
+      <br>
+      <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" pattern="[a-z0-9_-]+" required><br>
+        <span class="error-message" id="usernameError"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}" required><br><br>
+        
+        <div class="remember-forgot">
+          <label><input type="checkbox"> Remember Me</label>
+          <a href="#">Forgot Password</a>
+        </div>
+        
+        <button type="submit" class="btn submit-btn">Submit</button>
+        <input type="reset" value="Clear" class="btn clear-btn">
+      </form>
+    </center>
+  </div>
+
+<script>
+  function validateForm() {
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var email = document.getElementById('email').value;
+    var dob = new Date(document.getElementById('dob').value);
+    var age = calculateAge(dob);
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    var usernamePattern = /^[a-z0-9_-]+$/;
+
+    if (!usernamePattern.test(username)) {
+      document.getElementById('usernameError').textContent = "Username must be in lowercase.";
+      return false;
+    } else {
+      document.getElementById('usernameError').textContent = "";
+    }
+
+    if (age < 18) {
+      alert("You must be 18+ to register.");
+      return false;
+    }
+
+    var passwordPattern = /(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,}/;
+    if (!passwordPattern.test(password)) {
+      alert("Password must be at least 8 characters long and contain at least one letter, one digit, and one special character.");
+      return false;
+    }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    alert("Registration successful!\n\nName: " + firstName + " " + lastName + "\nEmail: " + email + "\nDate of Birth: " + dob.toDateString() + "\nPhone Number: " + phoneNumber + "\nUsername: " + username);
+    return true;
+  }
+
+  function calculateAge(dob) {
+    var today = new Date();
+    var age = today.getFullYear() - dob.getFullYear();
+    var monthDiff = today.getMonth() - dob.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    return age;
+  }
+</script>
+</body>
+</html>

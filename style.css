@@ -1,0 +1,68 @@
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e06767;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 50%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  h2 {
+    color: #333;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .btn {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn.clear-btn {
+    background-color: #d9534f;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .remember-forgot a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+  .remember-forgot a:hover {
+    text-decoration: underline;
+  }
+  .error-message {
+    color: red;
+  }
+  center {
+    display: block;
+    width: 100%;
+  }
